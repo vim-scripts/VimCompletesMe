@@ -1,0 +1,24 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4902
+
+A super simple, super minimal, super light-weight tab-completion plugin for Vim.
+
+Without configuration, the Tab key will:
+
+    Use Vim's local keyword completion (Ctrl-X_Ctrl-N).
+    Complete a file path (Ctrl-X_Ctrl-F)
+    Offer omni-completion after typing a period. (Ctrl-X_Ctrl-O)
+
+With a b:vcm_tab_complete variable, the Tab key will complete using:
+
+    Dictionary words (Ctrl-X_Ctrl-K)
+    User-defined completion (Ctrl-X_Ctrl-U)
+    Tags (Ctrl-X_Ctrl-])
+    Vim command line (Ctrl-X_Ctrl-V)
+
+You can set the b:vcm_tab_complete variable interactively, or in an autocommand:
+
+autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
+
+Striving for minimalism, this plugin weighs under 60 lines of code.
+
+Note: You can always get the latest version on github: https://github.com/ajh17/VimCompletesMe
