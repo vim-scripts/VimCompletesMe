@@ -1,6 +1,6 @@
 " VimCompletesMe.vim - For super simple tab completion
 " Maintainer:          Akshay Hegde <http://github.com/ajh17>
-" Version:             0.1
+" Version:             0.3
 " Website:             <http://github.com/ajh17/VimCompletesMe>
 
 " Vimscript Setup: {{{1
@@ -10,7 +10,7 @@ endif
 let g:loaded_VimCompletesMe = 1
 
 " Options: {{{1
-if !exists ('g:vcm_s_tab_behavior')
+if !exists('g:vcm_s_tab_behavior')
     let g:vcm_s_tab_behavior = 0
 endif
 
@@ -44,7 +44,11 @@ function! s:vimCompletesMe(type)
     endif
 
     let period = match(substr, '\.') != -1
-    let file_pattern = match(substr, '\/') != -1
+    if has('win32') || has('win64')
+        let file_pattern = match(substr, '\\') != -1
+    else
+        let file_pattern = match(substr, '\/') != -1
+    endif
 
     if file_pattern
         return "\<C-x>\<C-f>"
@@ -62,6 +66,8 @@ function! s:vimCompletesMe(type)
         return "\<C-x>\<C-u>"
     elseif map ==? "tags"
         return "\<C-x>\<C-]>"
+    elseif map ==? "omni"
+        return "\<C-x>\<C-o>"
     elseif map ==? "dict"
         return "\<C-x>\<C-k>"
     elseif map ==? "vim"

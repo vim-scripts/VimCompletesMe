@@ -47,6 +47,7 @@ of completion:
 2. "user"   - User-defined completion |i_Ctrl-X_Ctrl-U|
 3. "vim"    - Vim command line completion |i_Ctrl-X_Ctrl-V|
 4. "tags"   - Tag based completion |i_Ctrl-X_Ctrl-]|
+5. "omni"   - Omni completion |i_Ctrl-X_Ctrl-O|
 
 The b:vcm_tab_complete makes a great |:autocmd| as follows:
 >
