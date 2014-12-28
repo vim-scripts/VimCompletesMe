@@ -19,6 +19,6 @@ You can set the b:vcm_tab_complete variable interactively, or in an autocommand:
 
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 
-Striving for minimalism, this plugin weighs under 60 lines of code.
+Striving for minimalism, this plugin weighs under 80 lines of code.
 
 Note: You can always get the latest version on github: https://github.com/ajh17/VimCompletesMe

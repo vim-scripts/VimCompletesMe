@@ -53,6 +53,12 @@ The b:vcm_tab_complete makes a great |:autocmd| as follows:
 >
     autocmd FileType ruby let b:vcm_tab_complete = "tags"
 <
+
+When none of the special completions above get any results, you can press Tab
+again to have VimCompletesMe switch the context to keyword completion. The
+context will be automatically switched back to the completion set in
+the *b:vcm_tab_complete* variable.
+
 NOTE: The "dict" option requires the user to set |'dictionary'| in their
 |vimrc| file. In Unix, you can put the following in your ~/.vimrc:
 >
