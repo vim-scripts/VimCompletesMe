@@ -2,8 +2,7 @@
 
 A super simple, super minimal, super light-weight tab-completion plugin for Vim.
 
-
-Without configuration, the Tab key will, depending on the context, offer:
+Without any configuration, the Tab key will, depending on the context, offer:
 
 * Vim's local keyword completion
   ([Ctrl-X_Ctrl-N](http://vimhelp.appspot.com/insert.txt.html#i_CTRL-X_CTRL-N))
@@ -26,17 +25,16 @@ following type of completions:
 * Omni completion
   ([Ctrl-X_Ctrl-O](http://vimhelp.appspot.com/insert.txt.html#i_CTRL-X_CTRL-O))
 
-VimCompletesMe will even switch to keyword completion if none of the above
-completions has any results. Simply hitting Tab again will switch the context
-to keyword completion.
+If any of above types of completions fails to return any results, hitting Tab
+again will switch back to Vim's local keyword completion. VimCompletesMe will go
+back to trying the special completion for the next tab completion.
 
 You can set the `b:vcm_tab_complete` variable interactively, or in an
 autocommand:
 
     autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 
-Striving for minimalism, this plugin weighs under 70 lines of code.
-
+Striving for minimalism, this plugin weighs under 80 lines of code.
 
 ## Installation
 If you don't have a preferred installation method, I recommend installing

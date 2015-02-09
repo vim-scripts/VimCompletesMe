@@ -1,6 +1,6 @@
 " VimCompletesMe.vim - For super simple tab completion
 " Maintainer:          Akshay Hegde <http://github.com/ajh17>
-" Version:             1.0
+" Version:             1.1
 " Website:             <http://github.com/ajh17/VimCompletesMe>
 
 " Vimscript Setup: {{{1
@@ -16,6 +16,10 @@ endif
 
 if !exists('g:vcm_direction')
   let g:vcm_direction = 'n'
+endif
+
+if !exists('g:vcm_default_maps')
+  let g:vcm_default_maps = 1
 endif
 
 " Functions: {{{1
@@ -80,11 +84,14 @@ function! s:vim_completes_me(shift_tab)
 endfunction
 
 " Maps: {{{1
-inoremap <expr> <Tab> <SID>vim_completes_me(0)
-inoremap <expr> <S-Tab> <SID>vim_completes_me(1)
+if g:vcm_default_maps
+  inoremap <expr> <Tab> <SID>vim_completes_me(0)
+  inoremap <expr> <S-Tab> <SID>vim_completes_me(1)
+endif
 
 " Autocmds {{{1
 augroup VCM
   autocmd!
   autocmd InsertEnter * let b:completion_tried = 0
+  autocmd CompleteDone * let b:completion_tried = 0
 augroup END
