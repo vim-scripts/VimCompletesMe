@@ -1,6 +1,6 @@
 " VimCompletesMe.vim - For super simple tab completion
 " Maintainer:          Akshay Hegde <http://github.com/ajh17>
-" Version:             1.1
+" Version:             1.2
 " Website:             <http://github.com/ajh17/VimCompletesMe>
 
 " Vimscript Setup: {{{1
@@ -61,7 +61,7 @@ function! s:vim_completes_me(shift_tab)
   endif
 
   " First fallback to keyword completion if special completion was already tried.
-  if b:completion_tried
+  if exists('b:completion_tried') && b:completion_tried
     let b:completion_tried = 0
     return "\<C-e>" . dirs[!dir]
   endif
@@ -83,10 +83,13 @@ function! s:vim_completes_me(shift_tab)
   endif
 endfunction
 
+inoremap <expr> <plug>vim_completes_me_forward  <sid>vim_completes_me(0)
+inoremap <expr> <plug>vim_completes_me_backward <sid>vim_completes_me(1)
+
 " Maps: {{{1
 if g:vcm_default_maps
-  inoremap <expr> <Tab> <SID>vim_completes_me(0)
-  inoremap <expr> <S-Tab> <SID>vim_completes_me(1)
+  imap <Tab>   <plug>vim_completes_me_forward
+  imap <S-Tab> <plug>vim_completes_me_backward
 endif
 
 " Autocmds {{{1
