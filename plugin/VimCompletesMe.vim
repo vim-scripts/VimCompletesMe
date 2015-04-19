@@ -1,6 +1,6 @@
 " VimCompletesMe.vim - For super simple tab completion
 " Maintainer:          Akshay Hegde <http://github.com/ajh17>
-" Version:             1.2
+" Version:             1.2.1
 " Website:             <http://github.com/ajh17/VimCompletesMe>
 
 " Vimscript Setup: {{{1
@@ -96,5 +96,7 @@ endif
 augroup VCM
   autocmd!
   autocmd InsertEnter * let b:completion_tried = 0
-  autocmd CompleteDone * let b:completion_tried = 0
+  if v:version > 703 || v:version == 703 && has('patch598')
+    autocmd CompleteDone * let b:completion_tried = 0
+  endif
 augroup END
